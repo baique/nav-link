@@ -1,269 +1,364 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nav Link</title>
-  <meta name="description" content="Personal navigation page" />
-  <style>
-    :root {
-      --bg-1: #f8fbf6;
-      --bg-2: #d9f5ef;
-      --bg-3: #fcefd6;
-      --ink: #22303a;
-      --muted: #5d6b76;
-      --card: rgba(255, 255, 255, 0.72);
-      --line: rgba(255, 255, 255, 0.75);
-      --shadow: 0 18px 42px rgba(16, 35, 51, 0.12);
-      --radius: 22px;
-    }
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baique Dev Hub</title>
+    <meta name="description" content="全栈开发工程师常用网站导航" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap");
 
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: "Noto Sans", "Segoe UI", sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.9) 0%, transparent 28%),
-        radial-gradient(circle at 80% 5%, rgba(255, 255, 255, 0.6) 0%, transparent 25%),
-        linear-gradient(145deg, var(--bg-1), var(--bg-2), var(--bg-3));
-      padding: 36px 20px;
-    }
-
-    .wrap { max-width: 1160px; margin: 0 auto; }
-
-    .hero {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--card);
-      box-shadow: var(--shadow);
-      padding: 22px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-
-    .title { margin: 0; font-size: clamp(28px, 3.8vw, 40px); line-height: 1.1; }
-    .subtitle { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
-
-    .search input {
-      width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 11px 13px;
-      font-size: 14px;
-      outline: none;
-      background: rgba(255, 255, 255, 0.8);
-      color: var(--ink);
-    }
-
-    .section { margin-top: 22px; }
-    .section h2 { margin: 0 0 10px; font-size: 17px; }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-    }
-
-    .card {
-      text-decoration: none;
-      color: inherit;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: var(--card);
-      padding: 14px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 0 6px 18px rgba(31, 42, 68, 0.08);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 28px rgba(8, 20, 30, 0.15);
-    }
-
-    .icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: linear-gradient(160deg, #f36c3d, #008a8a);
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-weight: 700;
-      flex: 0 0 44px;
-      overflow: hidden;
-    }
-
-    .icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .meta h3 { margin: 0; font-size: 15px; }
-    .meta p { margin: 3px 0 0; color: var(--muted); font-size: 12px; word-break: break-all; }
-
-    .empty { color: var(--muted); margin-top: 12px; display: none; }
-  </style>
-</head>
-<body>
-  <main class="wrap">
-    <section class="hero">
-      <div>
-        <h1 class="title">My Start Page</h1>
-        <p class="subtitle">Clean groups, faster access.</p>
-      </div>
-      <div class="search">
-        <input id="searchInput" type="text" placeholder="Search by name or domain..." />
-      </div>
-    </section>
-
-    <div id="content"></div>
-    <p id="emptyState" class="empty">No matching result.</p>
-  </main>
-
-  <script>
-    const linkGroups = [
-      {
-        title: "Search",
-        links: [
-          { name: "Google", url: "https://www.google.com" },
-          { name: "Bing", url: "https://www.bing.com" },
-          { name: "Youdao Fanyi", url: "https://fanyi.youdao.com" }
-        ]
-      },
-      {
-        title: "Dev & Docs",
-        links: [
-          { name: "GitHub", url: "https://github.com" },
-          { name: "MiniMax", url: "https://www.minimax.io" },
-          { name: "OpenClaw", url: "https://openclaw.com" },
-          { name: "Inoreader", url: "https://www.inoreader.com" },
-          { name: "Iconify", url: "https://iconify.design" },
-          { name: "Ant Design Vue", url: "https://www.antdv.com/" },
-          { name: "VVBin Docs", url: "https://doc.vvbin.cn/" }
-        ]
-      },
-      {
-        title: "Media",
-        links: [
-          { name: "X", url: "https://x.com" },
-          { name: "Bilibili", url: "https://www.bilibili.com" },
-          { name: "YouTube", url: "https://www.youtube.com" }
-        ]
-      },
-      {
-        title: "Notes & Board",
-        links: [
-          { name: "Notion", url: "https://www.notion.so" },
-          { name: "Yuque", url: "https://www.yuque.com" },
-          { name: "Excalidraw", url: "https://excalidraw.com" }
-        ]
+      :root {
+        --bg-1: #f8fbf6;
+        --bg-2: #d9f5ef;
+        --bg-3: #fcefd6;
+        --ink: #22303a;
+        --muted: #5d6b76;
+        --card: rgba(255, 255, 255, 0.72);
+        --line: rgba(255, 255, 255, 0.75);
+        --shadow: 0 18px 42px rgba(16, 35, 51, 0.12);
+        --accent: #f36c3d;
+        --accent-2: #008a8a;
+        --radius: 22px;
       }
-    ];
 
-    const content = document.getElementById("content");
-    const searchInput = document.getElementById("searchInput");
-    const emptyState = document.getElementById("emptyState");
-
-    function domainOf(url) {
-      try {
-        return new URL(url).hostname.replace(/^www\./, "");
-      } catch {
-        return url;
+      [data-theme="night"] {
+        --bg-1: #132026;
+        --bg-2: #1e2f3b;
+        --bg-3: #273444;
+        --ink: #f0f4f8;
+        --muted: #c1ccd8;
+        --card: rgba(17, 27, 35, 0.6);
+        --line: rgba(255, 255, 255, 0.15);
+        --shadow: 0 18px 42px rgba(0, 0, 0, 0.35);
+        --accent: #ff875f;
+        --accent-2: #4dd7cd;
       }
-    }
 
-    function faviconURL(url) {
-      return `https://icons.duckduckgo.com/ip3/${domainOf(url)}.ico`;
-    }
+      [data-theme="graphite"] {
+        --bg-1: #eef1f4;
+        --bg-2: #dfe3e8;
+        --bg-3: #f5d8cc;
+        --ink: #1d242c;
+        --muted: #4f5a67;
+        --card: rgba(255, 255, 255, 0.68);
+        --line: rgba(255, 255, 255, 0.7);
+        --shadow: 0 16px 40px rgba(18, 29, 41, 0.15);
+        --accent: #2f6aaf;
+        --accent-2: #dd6c4f;
+      }
 
-    function firstLetter(name) {
-      return (name || "?").trim().charAt(0).toUpperCase();
-    }
+      * {
+        box-sizing: border-box;
+      }
 
-    function createCard(link) {
-      const a = document.createElement("a");
-      a.className = "card";
-      a.href = link.url;
-      a.target = "_blank";
-      a.rel = "noreferrer noopener";
-      a.dataset.search = `${link.name} ${domainOf(link.url)}`.toLowerCase();
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(
+            circle at 10% 10%,
+            rgba(255, 255, 255, 0.9) 0%,
+            transparent 28%
+          ),
+          radial-gradient(
+            circle at 80% 5%,
+            rgba(255, 255, 255, 0.6) 0%,
+            transparent 25%
+          ),
+          linear-gradient(145deg, var(--bg-1), var(--bg-2), var(--bg-3));
+        padding: 36px 20px;
+      }
 
-      const icon = document.createElement("div");
-      icon.className = "icon";
-      icon.textContent = firstLetter(link.name);
+      .wrap {
+        max-width: 1160px;
+        margin: 0 auto;
+      }
 
-      const img = document.createElement("img");
-      img.alt = `${link.name} icon`;
-      img.loading = "lazy";
-      img.src = faviconURL(link.url);
-      img.onerror = () => img.remove();
-      icon.prepend(img);
+      .hero {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--card);
+        backdrop-filter: blur(14px);
+        box-shadow: var(--shadow);
+        padding: 22px;
+        display: grid;
+        grid-template-columns: 1.25fr 1fr;
+        gap: 18px;
+      }
 
-      const meta = document.createElement("div");
-      meta.className = "meta";
+      .intro-head {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
 
-      const name = document.createElement("h3");
-      name.textContent = link.name;
+      .avatar {
+        width: 54px;
+        height: 54px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(155deg, var(--accent), var(--accent-2));
+        color: #fff;
+        font-size: 20px;
+        font-weight: 700;
+        font-family: "Space Grotesk", sans-serif;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      }
 
-      const host = document.createElement("p");
-      host.textContent = domainOf(link.url);
+      .title {
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(28px, 3.8vw, 40px);
+        line-height: 1.1;
+        letter-spacing: 0.02em;
+      }
 
-      meta.append(name, host);
-      a.append(icon, meta);
-      return a;
-    }
+      .subtitle {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .signature {
+        margin: 12px 0 0;
+        font-size: 15px;
+        color: var(--ink);
+        opacity: 0.9;
+      }
 
-    function renderLinks() {
-      content.innerHTML = "";
-      let totalCards = 0;
+      .tag-row {
+        margin-top: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
 
-      linkGroups.forEach((group) => {
-        const section = document.createElement("section");
-        section.className = "section";
+      .tag {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 4px 10px;
+        font-size: 12px;
+        background: rgba(255, 255, 255, 0.45);
+        color: var(--muted);
+      }
 
-        const h2 = document.createElement("h2");
-        h2.textContent = group.title;
+      .hero-side {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 12px;
+      }
 
-        const grid = document.createElement("div");
-        grid.className = "grid";
+      .timebox {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 12px 14px;
+        background: rgba(255, 255, 255, 0.38);
+      }
 
-        group.links.forEach((link) => {
-          grid.appendChild(createCard(link));
-          totalCards += 1;
-        });
+      .timebox p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
 
-        section.append(h2, grid);
-        content.appendChild(section);
-      });
+      .timebox h2 {
+        margin: 6px 0 0;
+        font-size: 26px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
 
-      emptyState.style.display = totalCards ? "none" : "block";
-    }
+      .search {
+        display: flex;
+        gap: 10px;
+      }
 
-    function filterCards(keyword) {
-      const q = keyword.trim().toLowerCase();
-      const cards = Array.from(document.querySelectorAll(".card"));
-      const sections = Array.from(document.querySelectorAll(".section"));
-      let visible = 0;
+      .search input {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 11px 13px;
+        font-size: 14px;
+        outline: none;
+        background: rgba(255, 255, 255, 0.7);
+        color: var(--ink);
+      }
 
-      cards.forEach((card) => {
-        const show = !q || card.dataset.search.includes(q);
-        card.style.display = show ? "" : "none";
-        if (show) visible += 1;
-      });
+      .themes {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
 
-      sections.forEach((section) => {
-        const hasVisible = section.querySelector('.card:not([style*="display: none"])');
-        section.style.display = hasVisible ? "" : "none";
-      });
+      .theme-btn {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 6px 10px;
+        background: rgba(255, 255, 255, 0.5);
+        font-size: 12px;
+        color: var(--ink);
+        cursor: pointer;
+      }
 
-      emptyState.style.display = visible ? "none" : "block";
-    }
+      .theme-btn.active {
+        background: linear-gradient(145deg, var(--accent), var(--accent-2));
+        color: #fff;
+        border-color: transparent;
+      }
 
-    searchInput.addEventListener("input", (e) => filterCards(e.target.value));
-    renderLinks();
-  </script>
-</body>
+      .section {
+        margin-top: 22px;
+        animation: rise 0.42s ease both;
+        animation-delay: var(--delay, 0s);
+      }
+
+      .section h2 {
+        margin: 0 0 10px;
+        font-size: 17px;
+        letter-spacing: 0.01em;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 14px;
+      }
+
+      .card {
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--card);
+        backdrop-filter: blur(12px);
+        padding: 14px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        box-shadow: 0 6px 18px rgba(31, 42, 68, 0.08);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          border-color 0.2s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 14px 28px rgba(8, 20, 30, 0.15);
+      }
+
+      .icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: linear-gradient(160deg, var(--accent), var(--accent-2));
+        display: grid;
+        place-items: center;
+        color: #fff;
+        font-weight: 700;
+        font-family: "Space Grotesk", sans-serif;
+        flex: 0 0 44px;
+        overflow: hidden;
+      }
+
+      .icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .meta h3 {
+        margin: 0;
+        font-size: 15px;
+      }
+      .meta p {
+        margin: 3px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+        word-break: break-all;
+      }
+
+      .empty {
+        color: var(--muted);
+        margin-top: 12px;
+        display: none;
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 860px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 560px) {
+        body {
+          padding: 18px 12px;
+        }
+        .hero {
+          padding: 15px;
+        }
+        .title {
+          font-size: 28px;
+        }
+        .card {
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="hero">
+        <div>
+          <div class="intro-head">
+            <div class="avatar" id="avatarText"></div>
+            <div>
+              <h1 class="title" id="pageTitle"></h1>
+              <p class="subtitle" id="greeting"></p>
+            </div>
+          </div>
+          <p class="signature" id="signature"></p>
+          <div class="tag-row" id="tagRow"></div>
+        </div>
+
+        <div class="hero-side">
+          <div class="timebox">
+            <p id="todayDate"></p>
+            <h2 id="clock"></h2>
+          </div>
+          <div class="search">
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="搜索网站名称或域名..."
+            />
+          </div>
+          <div class="themes" id="themeButtons"></div>
+        </div>
+      </section>
+
+      <div id="content"></div>
+      <p id="emptyState" class="empty">没有匹配结果，试试别的关键词。</p>
+    </main>
+
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
 </html>
