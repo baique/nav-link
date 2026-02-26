@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>我的导航</title>
-  <meta name="description" content="带个性信息的常用站点导航首页" />
+  <title>Nav Link</title>
+  <meta name="description" content="Personal navigation page" />
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap");
-
     :root {
       --bg-1: #f8fbf6;
       --bg-2: #d9f5ef;
@@ -17,45 +15,15 @@
       --card: rgba(255, 255, 255, 0.72);
       --line: rgba(255, 255, 255, 0.75);
       --shadow: 0 18px 42px rgba(16, 35, 51, 0.12);
-      --accent: #f36c3d;
-      --accent-2: #008a8a;
       --radius: 22px;
     }
 
-    [data-theme="night"] {
-      --bg-1: #132026;
-      --bg-2: #1e2f3b;
-      --bg-3: #273444;
-      --ink: #f0f4f8;
-      --muted: #c1ccd8;
-      --card: rgba(17, 27, 35, 0.6);
-      --line: rgba(255, 255, 255, 0.15);
-      --shadow: 0 18px 42px rgba(0, 0, 0, 0.35);
-      --accent: #ff875f;
-      --accent-2: #4dd7cd;
-    }
-
-    [data-theme="graphite"] {
-      --bg-1: #eef1f4;
-      --bg-2: #dfe3e8;
-      --bg-3: #f5d8cc;
-      --ink: #1d242c;
-      --muted: #4f5a67;
-      --card: rgba(255, 255, 255, 0.68);
-      --line: rgba(255, 255, 255, 0.7);
-      --shadow: 0 16px 40px rgba(18, 29, 41, 0.15);
-      --accent: #2f6aaf;
-      --accent-2: #dd6c4f;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      font-family: "Noto Sans", "Segoe UI", sans-serif;
       color: var(--ink);
       background:
         radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.9) 0%, transparent 28%),
@@ -64,110 +32,21 @@
       padding: 36px 20px;
     }
 
-    .wrap {
-      max-width: 1160px;
-      margin: 0 auto;
-    }
+    .wrap { max-width: 1160px; margin: 0 auto; }
 
     .hero {
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: var(--card);
-      backdrop-filter: blur(14px);
       box-shadow: var(--shadow);
       padding: 22px;
       display: grid;
-      grid-template-columns: 1.25fr 1fr;
-      gap: 18px;
+      grid-template-columns: 1fr;
+      gap: 14px;
     }
 
-    .intro-head {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .avatar {
-      width: 54px;
-      height: 54px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(155deg, var(--accent), var(--accent-2));
-      color: #fff;
-      font-size: 25px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    }
-
-    .title {
-      margin: 0;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(28px, 3.8vw, 40px);
-      line-height: 1.1;
-      letter-spacing: 0.02em;
-    }
-
-    .subtitle {
-      margin: 6px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .signature {
-      margin: 12px 0 0;
-      font-size: 15px;
-      color: var(--ink);
-      opacity: 0.9;
-    }
-
-    .tag-row {
-      margin-top: 14px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tag {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 4px 10px;
-      font-size: 12px;
-      background: rgba(255, 255, 255, 0.45);
-      color: var(--muted);
-    }
-
-    .hero-side {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .timebox {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 12px 14px;
-      background: rgba(255, 255, 255, 0.38);
-    }
-
-    .timebox p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .timebox h2 {
-      margin: 6px 0 0;
-      font-size: 26px;
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-
-    .search {
-      display: flex;
-      gap: 10px;
-    }
+    .title { margin: 0; font-size: clamp(28px, 3.8vw, 40px); line-height: 1.1; }
+    .subtitle { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
 
     .search input {
       width: 100%;
@@ -176,43 +55,12 @@
       padding: 11px 13px;
       font-size: 14px;
       outline: none;
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.8);
       color: var(--ink);
     }
 
-    .themes {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .theme-btn {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 6px 10px;
-      background: rgba(255, 255, 255, 0.5);
-      font-size: 12px;
-      color: var(--ink);
-      cursor: pointer;
-    }
-
-    .theme-btn.active {
-      background: linear-gradient(145deg, var(--accent), var(--accent-2));
-      color: #fff;
-      border-color: transparent;
-    }
-
-    .section {
-      margin-top: 22px;
-      animation: rise 0.42s ease both;
-      animation-delay: var(--delay, 0s);
-    }
-
-    .section h2 {
-      margin: 0 0 10px;
-      font-size: 17px;
-      letter-spacing: 0.01em;
-    }
+    .section { margin-top: 22px; }
+    .section h2 { margin: 0 0 10px; font-size: 17px; }
 
     .grid {
       display: grid;
@@ -226,18 +74,16 @@
       border: 1px solid var(--line);
       border-radius: 16px;
       background: var(--card);
-      backdrop-filter: blur(12px);
       padding: 14px;
       display: flex;
       align-items: center;
       gap: 12px;
       box-shadow: 0 6px 18px rgba(31, 42, 68, 0.08);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .card:hover {
       transform: translateY(-4px);
-      border-color: rgba(255, 255, 255, 0.95);
       box-shadow: 0 14px 28px rgba(8, 20, 30, 0.15);
     }
 
@@ -245,146 +91,74 @@
       width: 44px;
       height: 44px;
       border-radius: 12px;
-      background: linear-gradient(160deg, var(--accent), var(--accent-2));
+      background: linear-gradient(160deg, #f36c3d, #008a8a);
       display: grid;
       place-items: center;
       color: #fff;
       font-weight: 700;
-      font-family: "Space Grotesk", sans-serif;
       flex: 0 0 44px;
       overflow: hidden;
     }
 
-    .icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+    .icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .meta h3 { margin: 0; font-size: 15px; }
+    .meta p { margin: 3px 0 0; color: var(--muted); font-size: 12px; word-break: break-all; }
 
-    .meta h3 {
-      margin: 0;
-      font-size: 15px;
-    }
-
-    .meta p {
-      margin: 3px 0 0;
-      color: var(--muted);
-      font-size: 12px;
-      word-break: break-all;
-    }
-
-    .empty {
-      color: var(--muted);
-      margin-top: 12px;
-      display: none;
-    }
-
-    @keyframes rise {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 860px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 560px) {
-      body {
-        padding: 18px 12px;
-      }
-      .hero {
-        padding: 15px;
-      }
-      .title {
-        font-size: 28px;
-      }
-      .card {
-        padding: 12px;
-      }
-    }
+    .empty { color: var(--muted); margin-top: 12px; display: none; }
   </style>
 </head>
 <body>
   <main class="wrap">
     <section class="hero">
       <div>
-        <div class="intro-head">
-          <div class="avatar" id="avatarEmoji"></div>
-          <div>
-            <h1 class="title" id="pageTitle"></h1>
-            <p class="subtitle" id="greeting"></p>
-          </div>
-        </div>
-        <p class="signature" id="signature"></p>
-        <div class="tag-row" id="tagRow"></div>
+        <h1 class="title">My Start Page</h1>
+        <p class="subtitle">Clean groups, faster access.</p>
       </div>
-
-      <div class="hero-side">
-        <div class="timebox">
-          <p id="todayDate"></p>
-          <h2 id="clock"></h2>
-        </div>
-        <div class="search">
-          <input id="searchInput" type="text" placeholder="搜索网站名称或域名..." />
-        </div>
-        <div class="themes" id="themeButtons"></div>
+      <div class="search">
+        <input id="searchInput" type="text" placeholder="Search by name or domain..." />
       </div>
     </section>
 
     <div id="content"></div>
-    <p id="emptyState" class="empty">没有匹配结果，试试别的关键词。</p>
+    <p id="emptyState" class="empty">No matching result.</p>
   </main>
 
   <script>
-    const profile = {
-      title: "Yuki's Hub",
-      avatar: "Y",
-      subtitle: "代码、效率、灵感都在这里",
-      signature: "我喜欢把常用工具放在一页里，打开浏览器就能开始工作。",
-      tags: ["效率优先", "轻量主义", "持续构建", "写点好东西"]
-    };
-
-    const themes = [
-      { key: "default", label: "晨雾" },
-      { key: "graphite", label: "石墨" },
-      { key: "night", label: "夜航" }
-    ];
-
     const linkGroups = [
       {
-        title: "开发",
+        title: "Search",
+        links: [
+          { name: "Google", url: "https://www.google.com" },
+          { name: "Bing", url: "https://www.bing.com" },
+          { name: "Youdao Fanyi", url: "https://fanyi.youdao.com" }
+        ]
+      },
+      {
+        title: "Dev & Docs",
         links: [
           { name: "GitHub", url: "https://github.com" },
-          { name: "Stack Overflow", url: "https://stackoverflow.com" },
-          { name: "MDN", url: "https://developer.mozilla.org" },
-          { name: "Vercel", url: "https://vercel.com" }
+          { name: "MiniMax", url: "https://www.minimax.io" },
+          { name: "OpenClaw", url: "https://openclaw.com" },
+          { name: "Inoreader", url: "https://www.inoreader.com" },
+          { name: "Iconify", url: "https://iconify.design" },
+          { name: "Ant Design Vue", url: "https://www.antdv.com/" },
+          { name: "VVBin Docs", url: "https://doc.vvbin.cn/" }
         ]
       },
       {
-        title: "效率",
+        title: "Media",
         links: [
-          { name: "Gmail", url: "https://mail.google.com" },
-          { name: "Google Drive", url: "https://drive.google.com" },
+          { name: "X", url: "https://x.com" },
+          { name: "Bilibili", url: "https://www.bilibili.com" },
+          { name: "YouTube", url: "https://www.youtube.com" }
+        ]
+      },
+      {
+        title: "Notes & Board",
+        links: [
           { name: "Notion", url: "https://www.notion.so" },
-          { name: "飞书", url: "https://www.feishu.cn" }
-        ]
-      },
-      {
-        title: "资讯",
-        links: [
-          { name: "知乎", url: "https://www.zhihu.com" },
-          { name: "少数派", url: "https://sspai.com" },
-          { name: "YouTube", url: "https://www.youtube.com" },
-          { name: "哔哩哔哩", url: "https://www.bilibili.com" }
+          { name: "Yuque", url: "https://www.yuque.com" },
+          { name: "Excalidraw", url: "https://excalidraw.com" }
         ]
       }
     ];
@@ -392,14 +166,6 @@
     const content = document.getElementById("content");
     const searchInput = document.getElementById("searchInput");
     const emptyState = document.getElementById("emptyState");
-    const pageTitle = document.getElementById("pageTitle");
-    const greeting = document.getElementById("greeting");
-    const signature = document.getElementById("signature");
-    const tagRow = document.getElementById("tagRow");
-    const avatarEmoji = document.getElementById("avatarEmoji");
-    const todayDate = document.getElementById("todayDate");
-    const clock = document.getElementById("clock");
-    const themeButtons = document.getElementById("themeButtons");
 
     function domainOf(url) {
       try {
@@ -410,26 +176,11 @@
     }
 
     function faviconURL(url) {
-      const domain = domainOf(url);
-      return `https://icons.duckduckgo.com/ip3/${domain}.ico`;
+      return `https://icons.duckduckgo.com/ip3/${domainOf(url)}.ico`;
     }
 
     function firstLetter(name) {
       return (name || "?").trim().charAt(0).toUpperCase();
-    }
-
-    function helloByTime() {
-      const hour = new Date().getHours();
-      if (hour < 6) return "夜深了，保持专注也别忘记休息。";
-      if (hour < 12) return "早上好，今天也高效开局。";
-      if (hour < 18) return "下午好，继续推进你的计划。";
-      return "晚上好，适合整理和复盘。";
-    }
-
-    function updateClock() {
-      const now = new Date();
-      todayDate.textContent = now.toLocaleDateString("zh-CN", { year: "numeric", month: "long", day: "numeric", weekday: "long" });
-      clock.textContent = now.toLocaleTimeString("zh-CN", { hour12: false });
     }
 
     function createCard(link) {
@@ -465,58 +216,13 @@
       return a;
     }
 
-    function renderProfile() {
-      pageTitle.textContent = profile.title;
-      greeting.textContent = `${profile.subtitle} · ${helloByTime()}`;
-      signature.textContent = profile.signature;
-      avatarEmoji.textContent = profile.avatar;
-
-      tagRow.innerHTML = "";
-      for (const t of profile.tags) {
-        const tag = document.createElement("span");
-        tag.className = "tag";
-        tag.textContent = t;
-        tagRow.appendChild(tag);
-      }
-    }
-
-    function applyTheme(themeKey) {
-      if (themeKey === "default") {
-        document.documentElement.removeAttribute("data-theme");
-      } else {
-        document.documentElement.setAttribute("data-theme", themeKey);
-      }
-      localStorage.setItem("nav-theme", themeKey);
-      Array.from(themeButtons.querySelectorAll("button")).forEach((btn) => {
-        btn.classList.toggle("active", btn.dataset.theme === themeKey);
-      });
-    }
-
-    function renderThemes() {
-      themeButtons.innerHTML = "";
-      const stored = localStorage.getItem("nav-theme") || "default";
-
-      themes.forEach((theme) => {
-        const btn = document.createElement("button");
-        btn.className = "theme-btn";
-        btn.dataset.theme = theme.key;
-        btn.textContent = theme.label;
-        btn.type = "button";
-        btn.addEventListener("click", () => applyTheme(theme.key));
-        themeButtons.appendChild(btn);
-      });
-
-      applyTheme(stored);
-    }
-
     function renderLinks() {
       content.innerHTML = "";
       let totalCards = 0;
 
-      linkGroups.forEach((group, idx) => {
+      linkGroups.forEach((group) => {
         const section = document.createElement("section");
         section.className = "section";
-        section.style.setProperty("--delay", `${idx * 0.08}s`);
 
         const h2 = document.createElement("h2");
         h2.textContent = group.title;
@@ -557,12 +263,7 @@
     }
 
     searchInput.addEventListener("input", (e) => filterCards(e.target.value));
-
-    renderProfile();
-    renderThemes();
     renderLinks();
-    updateClock();
-    setInterval(updateClock, 1000);
   </script>
 </body>
 </html>
