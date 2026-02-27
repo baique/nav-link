@@ -79,6 +79,14 @@ window.NAV_CONFIG = {
         { name: "Yuque", url: "https://www.yuque.com" },
         { name: "Excalidraw", url: "https://excalidraw.com" }
       ]
+    },
+    {
+      title: "Mail",
+      links: [
+        { name: "Gmail", url: "https://mail.google.com" },
+        { name: "126 Mail", url: "https://mail.126.com" },
+        { name: "QQ Mail", url: "https://mail.qq.com" }
+      ]
     }
   ]
 };
